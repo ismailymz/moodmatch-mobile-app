@@ -23,12 +23,36 @@
           "sourceUrl": "https://netflix.com/the-intouchables"
         },
         {
-          "id": "happy_tv",
+          "id": "happy_serie",
           "type": "tvSeries",
           "title": "Ted Lasso",
           "subtitle": "Optimistic sports comedy",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/ted-lasso"
+        },
+        {
+          "id": "happy_music_2",
+          "type": "music",
+          "title": "Walking on Sunshine",
+          "subtitle": "Katrina & The Waves",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/walking-on-sunshine"
+        },
+        {
+          "id": "happy_movie_2",
+          "type": "movie",
+          "title": "Singin' in the Rain",
+          "subtitle": "Classic musical comedy",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/singin-in-the-rain"
+        },
+        {
+          "id": "happy_serie_2",
+          "type": "tvSeries",
+          "title": "Schitt's Creek",
+          "subtitle": "Heartfelt comedy series",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/schitts-creek"
         }
       ]
     },
@@ -55,12 +79,36 @@
           "sourceUrl": "https://netflix.com/lost-in-translation"
         },
         {
-          "id": "calm_tv",
+          "id": "calm_serie",
           "type": "tvSeries",
           "title": "Anne with an E",
           "subtitle": "Warm, slow-burning storytelling",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/anne-with-an-e"
+        },
+        {
+          "id": "calm_music_2",
+          "type": "music",
+          "title": "River Flows In You",
+          "subtitle": "Yiruma",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/river-flows-in-you"
+        },
+        {
+          "id": "calm_movie_2",
+          "type": "movie",
+          "title": "The Secret Life of Walter Mitty",
+          "subtitle": "Gentle adventure drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/walter-mitty"
+        },
+        {
+          "id": "calm_serie_2",
+          "type": "tvSeries",
+          "title": "The Great British Bake Off",
+          "subtitle": "Comforting baking competition",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/great-british-bake-off"
         }
       ]
     },
@@ -87,12 +135,36 @@
           "sourceUrl": "https://netflix.com/baby-driver"
         },
         {
-          "id": "energetic_tv",
+          "id": "energetic_serie",
           "type": "tvSeries",
           "title": "The Umbrella Academy",
           "subtitle": "Action-packed superhero drama",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/the-umbrella-academy"
+        },
+        {
+          "id": "energetic_music_2",
+          "type": "music",
+          "title": "Can't Hold Us",
+          "subtitle": "Macklemore & Ryan Lewis",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/cant-hold-us"
+        },
+        {
+          "id": "energetic_movie_2",
+          "type": "movie",
+          "title": "Rush",
+          "subtitle": "High-speed racing drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/rush"
+        },
+        {
+          "id": "energetic_serie_2",
+          "type": "tvSeries",
+          "title": "Brooklyn Nine-Nine",
+          "subtitle": "Fast-paced comedy",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/brooklyn-nine-nine"
         }
       ]
     },
@@ -119,12 +191,260 @@
           "sourceUrl": "https://netflix.com/la-la-land"
         },
         {
-          "id": "romantic_tv",
+          "id": "romantic_serie",
           "type": "tvSeries",
-          "title": "Heartstopper",
-          "subtitle": "Warm and heartfelt teen romance",
+          "title": "Full House",
+          "subtitle": "Funny and heartfelt romantic Korean drama",
           "imageUrl": null,
-          "sourceUrl": "https://netflix.com/heartstopper"
+          "sourceUrl": "https://netflix.com/full-house"
+        },
+        {
+          "id": "romantic_music_2",
+          "type": "music",
+          "title": "Bloom",
+          "subtitle": "The Paper Kites",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/bloom"
+        },
+        {
+          "id": "romantic_movie_2",
+          "type": "movie",
+          "title": "Before Sunrise",
+          "subtitle": "Intimate romantic drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/before-sunrise"
+        },
+        {
+          "id": "romantic_serie_2",
+          "type": "tvSeries",
+          "title": "Virgin River",
+          "subtitle": "Soft romantic drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/virgin-river"
+        }
+      ]
+    },
+    {
+      "id": "sad",
+      "name": "Sad",
+      "emoji": "😢",
+      "description": "Comfort yourself with emotional and uplifting picks.",
+      "recommendations": [
+        {
+          "id": "sad_music",
+          "type": "music",
+          "title": "Someone Like You",
+          "subtitle": "Adele",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/someone-like-you"
+        },
+        {
+          "id": "sad_movie",
+          "type": "movie",
+          "title": "The Pursuit of Happyness",
+          "subtitle": "Inspirational emotional drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-pursuit-of-happyness"
+        },
+        {
+          "id": "sad_serie",
+          "type": "tvSeries",
+          "title": "After Life",
+          "subtitle": "Dark comedy-drama about grief",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/after-life"
+        },
+        {
+          "id": "sad_music_2",
+          "type": "music",
+          "title": "Fix You",
+          "subtitle": "Coldplay",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/fix-you"
+        },
+        {
+          "id": "sad_movie_2",
+          "type": "movie",
+          "title": "The Theory of Everything",
+          "subtitle": "Emotional biographical drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-theory-of-everything"
+        },
+        {
+          "id": "sad_serie_2",
+          "type": "tvSeries",
+          "title": "This Is Us",
+          "subtitle": "Emotional family drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/this-is-us"
+        }
+      ]
+    },
+    {
+      "id": "focused",
+      "name": "Focused",
+      "emoji": "🎯",
+      "description": "Stay productive and concentrated with focused content.",
+      "recommendations": [
+        {
+          "id": "focused_music",
+          "type": "music",
+          "title": "Lo-fi Beats",
+          "subtitle": "ChilledCow",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/lofi-beats"
+        },
+        {
+          "id": "focused_movie",
+          "type": "movie",
+          "title": "The Social Network",
+          "subtitle": "Fast-paced tech drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-social-network"
+        },
+        {
+          "id": "focused_serie",
+          "type": "tvSeries",
+          "title": "Sherlock",
+          "subtitle": "Intelligent detective mystery",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/sherlock"
+        },
+        {
+          "id": "focused_music_2",
+          "type": "music",
+          "title": "Time",
+          "subtitle": "Hans Zimmer",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/time-hans-zimmer"
+        },
+        {
+          "id": "focused_movie_2",
+          "type": "movie",
+          "title": "The Imitation Game",
+          "subtitle": "Smart historical drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-imitation-game"
+        },
+        {
+          "id": "focused_serie_2",
+          "type": "tvSeries",
+          "title": "Mad Men",
+          "subtitle": "Creative work drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/mad-men"
+        }
+      ]
+    },
+    {
+      "id": "nostalgic",
+      "name": "Nostalgic",
+      "emoji": "📼",
+      "description": "Reconnect with warm memories and classic vibes.",
+      "recommendations": [
+        {
+          "id": "nostalgic_music",
+          "type": "music",
+          "title": "Bohemian Rhapsody",
+          "subtitle": "Queen",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/bohemian-rhapsody"
+        },
+        {
+          "id": "nostalgic_movie",
+          "type": "movie",
+          "title": "Back to the Future",
+          "subtitle": "Classic sci-fi adventure",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/back-to-the-future"
+        },
+        {
+          "id": "nostalgic_serie",
+          "type": "tvSeries",
+          "title": "Stranger Things",
+          "subtitle": "80s-inspired supernatural series",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/stranger-things"
+        },
+        {
+          "id": "nostalgic_music_2",
+          "type": "music",
+          "title": "Take On Me",
+          "subtitle": "a-ha",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/take-on-me"
+        },
+        {
+          "id": "nostalgic_movie_2",
+          "type": "movie",
+          "title": "The Goonies",
+          "subtitle": "Adventure from the 80s",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-goonies"
+        },
+        {
+          "id": "nostalgic_serie_2",
+          "type": "tvSeries",
+          "title": "The Wonder Years",
+          "subtitle": "Coming-of-age 80s nostalgia",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-wonder-years"
+        }
+      ]
+    },
+    {
+      "id": "party",
+      "name": "Party",
+      "emoji": "🎉",
+      "description": "Turn up the energy with fun and exciting entertainment.",
+      "recommendations": [
+        {
+          "id": "party_music",
+          "type": "music",
+          "title": "Uptown Funk",
+          "subtitle": "Mark Ronson ft. Bruno Mars",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/uptown-funk"
+        },
+        {
+          "id": "party_movie",
+          "type": "movie",
+          "title": "Project X",
+          "subtitle": "Wild teen party comedy",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/project-x"
+        },
+        {
+          "id": "party_serie",
+          "type": "tvSeries",
+          "title": "Brooklyn Nine-Nine",
+          "subtitle": "Funny and energetic sitcom",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/brooklyn-nine-nine"
+        },
+        {
+          "id": "party_music_2",
+          "type": "music",
+          "title": "Can't Stop the Feeling!",
+          "subtitle": "Justin Timberlake",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/cant-stop-the-feeling"
+        },
+        {
+          "id": "party_movie_2",
+          "type": "movie",
+          "title": "Pitch Perfect",
+          "subtitle": "Musical comedy",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/pitch-perfect"
+        },
+        {
+          "id": "party_serie_2",
+          "type": "tvSeries",
+          "title": "Glee",
+          "subtitle": "Musical comedy-drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/glee"
         }
       ]
     }

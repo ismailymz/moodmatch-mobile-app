@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import '../models/content_item.dart';
 import '../models/mood.dart';
 import '../services/local_data_service.dart';
@@ -6,6 +8,7 @@ class RecommendationRepository {
   RecommendationRepository(this._dataService);
 
   final LocalDataService _dataService;
+  final Random _random = Random();
   List<Mood>? _cache;
 
   Future<List<Mood>> fetchMoods() async {
@@ -25,6 +28,20 @@ class RecommendationRepository {
     } catch (_) {
       return null;
     }
+  }
+
+  Future<List<ContentItem>> fetchRecommendationsForMood(
+    String moodId, {
+    int count = 3,
+  }) async {
+    final mood = await fetchMoodById(moodId);
+    if (mood == null || mood.recommendations.isEmpty) {
+      return [];
+    }
+
+    final shuffled = List<ContentItem>.from(mood.recommendations)
+      ..shuffle(_random);
+    return shuffled.take(count).toList();
   }
 
   Future<List<ContentItem>> searchContent(String query) async {

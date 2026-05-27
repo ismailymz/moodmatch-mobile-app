@@ -101,3 +101,16 @@ final searchResultsProvider = FutureProvider.autoDispose<List<ContentItem>>((
 
   return ref.read(recommendationRepositoryProvider).searchContent(query);
 });
+
+final moodRecommendationsProvider = FutureProvider.autoDispose<List<ContentItem>>(
+  (ref) async {
+    final selectedMood = ref.watch(selectedMoodProvider);
+    if (selectedMood == null) {
+      return [];
+    }
+
+    return ref
+        .read(recommendationRepositoryProvider)
+        .fetchRecommendationsForMood(selectedMood.id);
+  },
+);
