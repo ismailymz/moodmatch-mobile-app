@@ -6,11 +6,7 @@ import 'package:moodmatch_mobile_app/main.dart';
 
 void main() {
   testWidgets('shows MoodMatch home screen', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const ProviderScope(
-        child: MyApp(),
-      ),
-    );
+    await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
     expect(find.text(AppConstants.appName), findsOneWidget);
     expect(find.text('Welcome to MoodMatch'), findsOneWidget);

@@ -1,0 +1,132 @@
+{
+  "moods": [
+    {
+      "id": "happy",
+      "name": "Happy",
+      "emoji": "😊",
+      "description": "Brighten your day with upbeat recommendations.",
+      "recommendations": [
+        {
+          "id": "happy_music",
+          "type": "music",
+          "title": "Happy",
+          "subtitle": "Pharrell Williams",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/happy-music"
+        },
+        {
+          "id": "happy_movie",
+          "type": "movie",
+          "title": "The Intouchables",
+          "subtitle": "Feel-good comedy-drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-intouchables"
+        },
+        {
+          "id": "happy_tv",
+          "type": "tvSeries",
+          "title": "Ted Lasso",
+          "subtitle": "Optimistic sports comedy",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/ted-lasso"
+        }
+      ]
+    },
+    {
+      "id": "calm",
+      "name": "Calm",
+      "emoji": "🌿",
+      "description": "Relax and unwind with gentle selections.",
+      "recommendations": [
+        {
+          "id": "calm_music",
+          "type": "music",
+          "title": "Weightless",
+          "subtitle": "Marconi Union",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/weightless"
+        },
+        {
+          "id": "calm_movie",
+          "type": "movie",
+          "title": "Lost in Translation",
+          "subtitle": "Quiet, contemplative drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/lost-in-translation"
+        },
+        {
+          "id": "calm_tv",
+          "type": "tvSeries",
+          "title": "Anne with an E",
+          "subtitle": "Warm, slow-burning storytelling",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/anne-with-an-e"
+        }
+      ]
+    },
+    {
+      "id": "energetic",
+      "name": "Energetic",
+      "emoji": "⚡",
+      "description": "Pump up the pace with energizing picks.",
+      "recommendations": [
+        {
+          "id": "energetic_music",
+          "type": "music",
+          "title": "Don’t Stop Me Now",
+          "subtitle": "Queen",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/dont-stop-me-now"
+        },
+        {
+          "id": "energetic_movie",
+          "type": "movie",
+          "title": "Baby Driver",
+          "subtitle": "Fast-paced music-driven thriller",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/baby-driver"
+        },
+        {
+          "id": "energetic_tv",
+          "type": "tvSeries",
+          "title": "The Umbrella Academy",
+          "subtitle": "Action-packed superhero drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-umbrella-academy"
+        }
+      ]
+    },
+    {
+      "id": "romantic",
+      "name": "Romantic",
+      "emoji": "💖",
+      "description": "Set a cozy tone with romantic recommendations.",
+      "recommendations": [
+        {
+          "id": "romantic_music",
+          "type": "music",
+          "title": "All of Me",
+          "subtitle": "John Legend",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/all-of-me"
+        },
+        {
+          "id": "romantic_movie",
+          "type": "movie",
+          "title": "La La Land",
+          "subtitle": "Modern musical romance",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/la-la-land"
+        },
+        {
+          "id": "romantic_tv",
+          "type": "tvSeries",
+          "title": "Heartstopper",
+          "subtitle": "Warm and heartfelt teen romance",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/heartstopper"
+        }
+      ]
+    }
+  ]
+}
