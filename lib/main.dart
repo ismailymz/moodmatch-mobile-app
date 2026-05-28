@@ -7,11 +7,7 @@ import 'screens/home_screen.dart';
 import 'screens/search_screen.dart';
 
 void main() {
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 final _router = GoRouter(
