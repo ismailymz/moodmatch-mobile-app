@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'constants/app_constants.dart';
-import 'constants/app_theme.dart';
-import 'providers/theme_provider.dart';
-import 'router/app_router.dart';
+import 'screens/home_screen.dart';
+import 'screens/search_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends ConsumerWidget {
+final _router = GoRouter(
+  initialLocation: AppConstants.homeRoute,
+  routes: [
+    GoRoute(
+      path: AppConstants.homeRoute,
+      builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: AppConstants.searchRoute,
+      builder: (context, state) => const SearchScreen(),
+    ),
+  ],
+);
+
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeModeProvider);
-
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       title: AppConstants.appName,
-      debugShowCheckedModeBanner: false,
-      routerConfig: appRouter,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: themeMode,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      routerConfig: _router,
     );
   }
 }
