@@ -40,7 +40,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final searchResults = ref.watch(searchResultsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Search')),
+      appBar: AppBar(
+        title: const Text('Search'),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -81,7 +84,28 @@ class _SearchEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Search for music, movies, or TV shows.'));
+    final theme = Theme.of(context);
+
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.search,
+            size: 64,
+            color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Search for music, movies, or TV shows',
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -95,12 +119,38 @@ class _SearchResultsList extends StatelessWidget {
     return searchResults.when(
       data: (results) {
         if (results.isEmpty) {
-          return const Center(child: Text('No search results found.'));
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.search_off,
+                  size: 64,
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurfaceVariant
+                      .withValues(alpha: 0.5),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'No results found',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Try a different search term',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                ),
+              ],
+            ),
+          );
         }
 
         return ListView.separated(
           itemCount: results.length,
-          separatorBuilder: (context, _) => const SizedBox(height: 12),
+          separatorBuilder: (context, _) => const Divider(height: 1),
           itemBuilder: (context, index) {
             final item = results[index];
             return _SearchResultTile(item: item);
@@ -108,8 +158,31 @@ class _SearchResultsList extends StatelessWidget {
         );
       },
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) =>
-          Center(child: Text('Search failed: $error')),
+      error: (error, stackTrace) => Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.error_outline,
+              size: 64,
+              color: Theme.of(context).colorScheme.error,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Search failed',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              error.toString(),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -121,10 +194,31 @@ class _SearchResultTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return ListTile(
-      leading: Icon(_iconForType(item.type)),
-      title: Text(item.title),
-      subtitle: Text('${item.type.displayName} • ${item.subtitle}'),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      leading: CircleAvatar(
+        backgroundColor: theme.colorScheme.primaryContainer,
+        child: Icon(
+          _iconForType(item.type),
+          color: theme.colorScheme.onPrimaryContainer,
+        ),
+      ),
+      title: Text(
+        item.title,
+        style: theme.textTheme.titleMedium?.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      subtitle: Padding(
+        padding: const EdgeInsets.only(top: 4),
+        child: Text('${item.type.displayName} • ${item.subtitle}'),
+      ),
+      trailing: Icon(
+        Icons.chevron_right,
+        color: theme.colorScheme.onSurfaceVariant,
+      ),
     );
   }
 
