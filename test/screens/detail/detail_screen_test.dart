@@ -14,6 +14,7 @@ void main() {
     title: 'Inception',
     subtitle: 'Sci-Fi Thriller',
     imageUrl: '',
+    moodId: 'focused',
   );
 
   testWidgets('DetailScreen renders title, subtitle, and unfavourited icon correctly', (WidgetTester tester) async {
