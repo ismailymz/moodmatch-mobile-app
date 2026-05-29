@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../constants/app_constants.dart';
+import '../constants/app_colors.dart';
 import 'placeholder_screen.dart';
 import 'search_screen.dart';
+
+import 'home_screen.dart';
+import 'browse_screen.dart';
+import 'settings/settings_screen.dart';
+import 'favourites_screen.dart';
 
 class MainScaffold extends StatefulWidget {
   const MainScaffold({this.initialIndex = 0, super.key});
@@ -20,13 +26,13 @@ class _MainScaffoldState extends State<MainScaffold> {
       label: 'Home',
       icon: Icons.home,
       route: AppConstants.homeRoute,
-      screen: PlaceholderScreen(title: 'Home', icon: Icons.home),
+      screen: HomeScreen(),
     ),
     _ScaffoldTab(
       label: 'Browse',
       icon: Icons.explore,
       route: AppConstants.browseRoute,
-      screen: PlaceholderScreen(title: 'Browse', icon: Icons.explore),
+      screen: BrowseScreen(),
     ),
     _ScaffoldTab(
       label: 'Search',
@@ -38,13 +44,13 @@ class _MainScaffoldState extends State<MainScaffold> {
       label: 'Favourites',
       icon: Icons.favorite,
       route: AppConstants.favouritesRoute,
-      screen: PlaceholderScreen(title: 'Favourites', icon: Icons.favorite),
+      screen: FavouritesScreen(),
     ),
     _ScaffoldTab(
       label: 'Settings',
       icon: Icons.settings,
       route: AppConstants.settingsRoute,
-      screen: PlaceholderScreen(title: 'Settings', icon: Icons.settings),
+      screen: SettingsScreen(),
     ),
   ];
 
@@ -80,31 +86,47 @@ class _MainScaffoldState extends State<MainScaffold> {
   @override
   Widget build(BuildContext context) {
     final selectedTab = _tabs[_selectedIndex];
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-    return Scaffold(
-      appBar: AppBar(title: Text(selectedTab.label)),
-      body: SafeArea(child: selectedTab.screen),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        items: _tabs
-            .map(
-              (tab) => BottomNavigationBarItem(
-                icon: Icon(tab.icon),
-                label: tab.label,
-              ),
-            )
-            .toList(),
-        onTap: (index) {
-          if (index == _selectedIndex) {
-            return;
-          }
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: isDarkMode ? AppColors.darkGradient : AppColors.lightGradient,
+        ),
+      ),
 
-          setState(() {
-            _selectedIndex = index;
-          });
-          context.go(_tabs[index].route);
-        },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: selectedTab.screen,
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+
+          currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Theme.of(context).colorScheme.primary,
+          unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
+          items: _tabs
+              .map(
+                (tab) => BottomNavigationBarItem(
+              icon: Icon(tab.icon),
+              label: tab.label,
+            ),
+          )
+              .toList(),
+          onTap: (index) {
+            if (index == _selectedIndex) {
+              return;
+            }
+
+            setState(() {
+              _selectedIndex = index;
+            });
+            context.go(_tabs[index].route);
+          },
+        ),
       ),
     );
   }

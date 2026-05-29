@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../constants/app_constants.dart';
 import '../../providers/theme_provider.dart';
-
+import '../../widgets/custom_app_bar.dart';
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -14,7 +14,8 @@ class SettingsScreen extends ConsumerWidget {
     final isDarkMode = themeMode == ThemeMode.dark;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      backgroundColor: Colors.transparent,
+      appBar: const CustomAppBar(),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

@@ -4,7 +4,8 @@ class AppConstants {
   static const String appName = 'MoodMatch';
   static const String contentJsonPath = 'assets/data/content.json';
 
-  static const String homeRoute = '/';
+  static const String welcomeRoute = '/';
+  static const String homeRoute = '/home';
   static const String browseRoute = '/browse';
   static const String detailRoute = '/detail';
   static const String searchRoute = '/search';

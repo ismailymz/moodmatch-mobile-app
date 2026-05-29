@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../constants/app_constants.dart';
 import '../models/content_item.dart';
 import '../models/mood.dart';
 import '../providers/app_providers.dart';
+import '../widgets/custom_app_bar.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -19,9 +22,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final selectedMoodId = ref.watch(selectedMoodIdProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('MoodMatch'),
-      ),
+      backgroundColor: Colors.transparent,
+      appBar: const CustomAppBar(),
+
       body: SafeArea(
         child: moodsAsync.when(
           data: (moods) {
@@ -29,19 +32,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               return const Center(child: Text('No moods available.'));
             }
 
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _MoodSelectionSection(
-                  moods: moods,
-                  selectedMoodId: selectedMoodId,
-                ),
-                const SizedBox(height: 16),
-                if (selectedMoodId != null)
-                  const _MoodTrioResultSection(),
-                const SizedBox(height: 16),
-                const Expanded(child: _TopPicksSection()),
-              ],
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _MoodSelectionSection(
+                    moods: moods,
+                    selectedMoodId: selectedMoodId,
+                  ),
+                  const SizedBox(height: 16),
+                  if (selectedMoodId != null)
+                    const _MoodTrioResultSection(),
+                  const SizedBox(height: 16),
+                  const _TopPicksSection(),
+                ],
+              ),
             );
           },
           loading: () => const Center(child: CircularProgressIndicator()),
@@ -82,6 +87,12 @@ class _MoodSelectionSection extends ConsumerWidget {
               return FilterChip(
                 label: Text('${mood.emoji} ${mood.name}'),
                 selected: isSelected,
+                backgroundColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                selectedColor: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                side: BorderSide.none,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 onSelected: (selected) {
                   ref
                       .read(selectedMoodIdProvider.notifier)
@@ -119,13 +130,20 @@ class _MoodTrioResultSection extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           recommendationsAsync.when(
-            data: (recommendations) {
-              if (recommendations.isEmpty) {
-                return const Text('No recommendations available.');
-              }
+            data: (_) {
+              final allRecommendations = selectedMood.recommendations;
+
+              final musics = allRecommendations.where((item) => item.type == ContentType.music).toList()..shuffle();
+              final movies = allRecommendations.where((item) => item.type == ContentType.movie).toList()..shuffle();
+              final tvSeries = allRecommendations.where((item) => item.type == ContentType.tvSeries).toList()..shuffle();
+
+              final trioList = <ContentItem>[];
+              if (musics.isNotEmpty) trioList.add(musics.first);
+              if (movies.isNotEmpty) trioList.add(movies.first);
+              if (tvSeries.isNotEmpty) trioList.add(tvSeries.first);
 
               return Column(
-                children: recommendations.map((item) {
+                children: trioList.map((item) {
                   return _MoodTrioResultTile(item: item);
                 }).toList(),
               );
@@ -151,12 +169,25 @@ class _MoodTrioResultTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 4),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: ListTile(
-        leading: Icon(_iconForType(item.type)),
+        leading: Hero(
+          tag: item.id,
+          child: Icon(_iconForType(item.type)),
+        ),
         title: Text(item.title),
         subtitle: Text('${item.type.displayName} • ${item.subtitle}'),
+        tileColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        onTap: () {
+          context.push(
+            '${AppConstants.detailRoute}/${item.id}',
+            extra: item,
+          );
+        },
       ),
     );
   }
@@ -190,29 +221,29 @@ class _TopPicksSection extends ConsumerWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
-          Expanded(
-            child: moodsAsync.when(
-              data: (moods) {
-                final allRecommendations = moods
-                    .expand((mood) => mood.recommendations)
-                    .toList();
+          moodsAsync.when(
+            data: (moods) {
+              final allRecommendations = moods
+                  .expand((mood) => mood.recommendations)
+                  .toList();
 
-                if (allRecommendations.isEmpty) {
-                  return const Center(child: Text('No picks available.'));
-                }
+              if (allRecommendations.isEmpty) {
+                return const Center(child: Text('No picks available.'));
+              }
 
-                return ListView.separated(
-                  itemCount: allRecommendations.length,
-                  separatorBuilder: (context, _) => const SizedBox(height: 8),
-                  itemBuilder: (context, index) {
-                    final item = allRecommendations[index];
-                    return _TopPickTile(item: item);
-                  },
-                );
-              },
-              loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stackTrace) => Center(child: Text('Error: $error')),
-            ),
+              return ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: allRecommendations.length,
+                separatorBuilder: (context, _) => const SizedBox(height: 8),
+                itemBuilder: (context, index) {
+                  final item = allRecommendations[index];
+                  return _TopPickTile(item: item);
+                },
+              );
+            },
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (error, stackTrace) => Center(child: Text('Error: $error')),
           ),
         ],
       ),
@@ -228,13 +259,22 @@ class _TopPickTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(_iconForType(item.type)),
+      leading: Hero(
+        tag: item.id,
+        child: Icon(_iconForType(item.type)),
+      ),
       title: Text(item.title),
       subtitle: Text('${item.type.displayName} • ${item.subtitle}'),
-      tileColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+      tileColor: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+      onTap: () {
+        context.push(
+          '${AppConstants.detailRoute}/${item.id}',
+          extra: item,
+        );
+      },
     );
   }
 

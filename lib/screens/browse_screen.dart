@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/content_item.dart';
 import '../providers/browse_providers.dart';
+import 'package:go_router/go_router.dart';
+import '../constants/app_constants.dart';
+import '../widgets/custom_app_bar.dart';
 
 class BrowseScreen extends ConsumerStatefulWidget {
   const BrowseScreen({super.key});
@@ -47,9 +50,8 @@ class _BrowseScreenState extends ConsumerState<BrowseScreen> {
     final selectedFilters = ref.watch(browseFilterProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Browse'),
-      ),
+      backgroundColor: Colors.transparent,
+      appBar: const CustomAppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -155,9 +157,18 @@ class _BrowseContentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(_iconForType(item.type)),
+      leading: Hero(
+        tag: item.id,
+        child: Icon(_iconForType(item.type)),
+      ),
       title: Text(item.title),
       subtitle: Text('${item.type.displayName} • ${item.subtitle}'),
+      onTap: () {
+        context.push(
+          '${AppConstants.detailRoute}/${item.id}',
+          extra: item,
+        );
+      },
     );
   }
 
