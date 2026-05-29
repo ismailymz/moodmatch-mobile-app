@@ -4,9 +4,16 @@ import 'package:go_router/go_router.dart';
 import '../constants/app_constants.dart';
 import '../screens/main_scaffold.dart';
 import '../screens/placeholder_screen.dart';
+import '../models/content_item.dart';
+import '../screens/detail_screen.dart';
+import '../screens/welcome_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
+    GoRoute(
+      path: AppConstants.welcomeRoute,
+      builder: (context, state) => const WelcomeScreen(),
+    ),
     GoRoute(
       path: AppConstants.homeRoute,
       builder: (context, state) => const MainScaffold(initialIndex: 0),
@@ -35,12 +42,16 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '${AppConstants.detailRoute}/:id',
       builder: (context, state) {
-        final id = state.pathParameters['id'] ?? '';
+        // Sayfaya gönderilen ekstra objeyi (ContentItem) alıyoruz
+        final item = state.extra as ContentItem?;
 
-        return PlaceholderScreen(
-          title: 'Detail: $id',
-          icon: Icons.info_outline,
-        );
+        if (item == null) {
+          return const PlaceholderScreen(
+            title: 'Error: Item not found',
+            icon: Icons.error,
+          );
+        }
+        return DetailScreen(item: item);
       },
     ),
   ],

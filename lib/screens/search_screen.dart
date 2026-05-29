@@ -1,9 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
+import '../constants/app_constants.dart';
 import '../models/content_item.dart';
 import '../providers/app_providers.dart';
 import '../utils/search_validator.dart';
+import '../widgets/custom_app_bar.dart';
+
+class SearchFilterNotifier extends Notifier<Set<ContentType>> {
+  @override
+  Set<ContentType> build() {
+    return {};
+  }
+
+  void toggleFilter(ContentType type) {
+    if (state.contains(type)) {
+      state = {...state}..remove(type);
+    } else {
+      state = {...state, type};
+    }
+  }
+
+  void clear() {
+    state = {};
+  }
+}
+
+final searchCategoryFilterProvider =
+NotifierProvider<SearchFilterNotifier, Set<ContentType>>(
+  SearchFilterNotifier.new,
+);
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
@@ -38,12 +65,16 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget build(BuildContext context) {
     final searchQuery = ref.watch(searchQueryProvider);
     final searchResults = ref.watch(searchResultsProvider);
+    final selectedFilters = ref.watch(searchCategoryFilterProvider);
+
+    final filteredResults = searchResults.whenData((items) {
+      if (selectedFilters.isEmpty) return items;
+      return items.where((item) => selectedFilters.contains(item.type)).toList();
+    });
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search'),
-        centerTitle: true,
-      ),
+      backgroundColor: Colors.transparent,
+      appBar: const CustomAppBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -64,16 +95,48 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   validator: validateSearchQuery,
                   onChanged: _onSearchChanged,
                 ),
+                const SizedBox(height: 12),
+
+                _SearchCategoryFilterChips(selectedFilters: selectedFilters),
+
                 const SizedBox(height: 16),
                 Expanded(
                   child: searchQuery.trim().isEmpty
                       ? const _SearchEmptyState()
-                      : _SearchResultsList(searchResults: searchResults),
+                      : _SearchResultsList(searchResults: filteredResults), // Filtrelenmiş sonuçları listeye gönderiyoruz
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _SearchCategoryFilterChips extends ConsumerWidget {
+  const _SearchCategoryFilterChips({required this.selectedFilters});
+
+  final Set<ContentType> selectedFilters;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          for (final type in ContentType.values)
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: FilterChip(
+                label: Text(type.displayName),
+                selected: selectedFilters.contains(type),
+                onSelected: (_) {
+                  ref.read(searchCategoryFilterProvider.notifier).toggleFilter(type);
+                },
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -93,7 +156,7 @@ class _SearchEmptyState extends StatelessWidget {
           Icon(
             Icons.search,
             size: 64,
-            color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
+            color: theme.colorScheme.onSurfaceVariant.withOpacity(0.5),
           ),
           const SizedBox(height: 16),
           Text(
@@ -129,7 +192,7 @@ class _SearchResultsList extends StatelessWidget {
                   color: Theme.of(context)
                       .colorScheme
                       .onSurfaceVariant
-                      .withValues(alpha: 0.5),
+                      .withOpacity(0.5),
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -138,10 +201,10 @@ class _SearchResultsList extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Try a different search term',
+                  'Try a different search term or filter',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
                 ),
               ],
             ),
@@ -176,8 +239,8 @@ class _SearchResultsList extends StatelessWidget {
             Text(
               error.toString(),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -198,11 +261,14 @@ class _SearchResultTile extends StatelessWidget {
 
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      leading: CircleAvatar(
-        backgroundColor: theme.colorScheme.primaryContainer,
-        child: Icon(
-          _iconForType(item.type),
-          color: theme.colorScheme.onPrimaryContainer,
+      leading: Hero(
+        tag: 'search_${item.id}',
+        child: CircleAvatar(
+          backgroundColor: theme.colorScheme.primaryContainer,
+          child: Icon(
+            _iconForType(item.type),
+            color: theme.colorScheme.onPrimaryContainer,
+          ),
         ),
       ),
       title: Text(
@@ -219,6 +285,12 @@ class _SearchResultTile extends StatelessWidget {
         Icons.chevron_right,
         color: theme.colorScheme.onSurfaceVariant,
       ),
+      onTap: () {
+        context.push(
+          '${AppConstants.detailRoute}/${item.id}',
+          extra: item,
+        );
+      },
     );
   }
 
