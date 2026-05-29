@@ -1,0 +1,35 @@
+name: Flutter CI
+
+# Trigger this workflow automatically on every push or pull request to the main/master branches.
+# This serves as a gatekeeper to ensure that no breaking changes are merged into the production code.
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Set up the Flutter environment on the runner using the stable channel.
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      # Fetch all required Dart packages and dependencies defined in pubspec.yaml.
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Run Flutter's static analysis tool.
+      # This enforces clean architecture, readability, and catches syntax issues early.
+      - name: Analyze project source
+        run: flutter analyze
+
+      # Execute the comprehensive widget tests to guarantee UI and state management integrity.
+      # This step ensures that our core features (like the favorites toggle in DetailScreen) remain functional.
+      - name: Run widget tests
+        run: flutter test
