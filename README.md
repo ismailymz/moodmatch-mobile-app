@@ -6,6 +6,18 @@ A Flutter mobile application that provides personalized movie, TV series, and mu
 
 MoodMatch helps users discover entertainment content that matches their emotional state. By selecting a mood, users receive curated recommendations for movies, TV shows, and music that align with how they're feeling. The app features a powerful search functionality to explore the entire recommendation database.
 
+## Screenshots
+
+<div align="center">
+  <img src="/docs/screenshots/welcome_screen.png" alt="Welcome Screen" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="/docs/screenshots/home_screen.png" alt="Home Screen" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="/docs/screenshots/favourites_screen.png" alt="Favourites Screen" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="/docs/screenshots/browse_screen.png" alt="Browse Screen" width="250"/>
+</div>
+
 ## Features
 
 - **Mood-Based Recommendations**: Get personalized content suggestions based on your current emotional state
@@ -193,3 +205,10 @@ This project is created for educational purposes as part of a Mobile Application
 - Built with Flutter and the Flutter community's excellent packages
 - Material Design 3 for the design system
 - Riverpod for elegant state management
+
+## Project Team
+
+- **Ismail Yilmaz** - 5123090
+- **Phat Vo** - 2405645
+- **Erkin Caliskan** - 5123096
+- **Md Abdur Rahim** - 2407096

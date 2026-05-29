@@ -4,50 +4,33 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/content_item.dart';
 import '../../providers/favorites_provider.dart';
 
-// [Project Description - Page 2]: State management zorunluluğu ve
-// [Unit 3 - Page 12]: "Parent manages the state" kuralı gereği, favori durumu
-// global olarak yönetildiği için reaktif dinleme yapabilen ConsumerWidget kullanıyoruz.
 class DetailScreen extends ConsumerWidget {
-  // [FlutterUnit06 - Page 38]: "Data passing between screens" (Ekranlar arası veri taşıma)
-  // kuralına uygun olarak tıklanan öğeyi parametre olarak alıyoruz.
   final ContentItem item;
 
   const DetailScreen({super.key, required this.item});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // [Unit 1 & Unit 7]: Riverpod yardımıyla favoriler listesi dinleniyor.
     final favoriteItems = ref.watch(favoritesProvider);
     final isFavorite = favoriteItems.any((fav) => fav.id == item.id);
     final double generatedRating = 3.0 + (item.id.hashCode.abs() % 21) / 10;
 
-    // [Unit 2 - Page 7 & FlutterUnit06 - Page 3]: Her ekranın temeli Scaffold'dur.
     return Scaffold(
-      // [Issue #6 Task]: "Implement layout with CustomScrollView, SliverAppBar..."
-      // İçeriğin kaydırılabilir olması (Scrollable view) istendiği için bu yapı kullanıldı.
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            // [Issue #6 Task]: "Poster image must be full-width and around 250px tall"
             expandedHeight: 250.0,
             pinned: true,
-            // Scaffold'un AppBar'ı otomatik olarak geri (Back) butonu ekler, bu da Navigator.pop işlemini kendi yapar.
 
             actions: [
               IconButton(
-                // [Unit 4 - Page 39]: Material Icons kullanımı.
                 icon: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_border,
                   color: isFavorite ? Colors.redAccent : Colors.white,
                 ),
                 onPressed: () async {
-                  // [Unit 3 - Page 15]: Butona tıklandığında state güncellenir.
-                  // Optimizasyon için watch yerine read kullanıyoruz.
                   await ref.read(favoritesProvider.notifier).toggleFavorite(item);
-
                   if (context.mounted) {
-                    // [FlutterUnit06 - Page 3]: Scaffold "It also provides APIs for showing snack bars"
-                    // kuralına dayanarak kullanıcıya geri bildirim veriyoruz.
                     ScaffoldMessenger.of(context).clearSnackBars();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
