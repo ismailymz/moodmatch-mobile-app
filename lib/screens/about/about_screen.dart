@@ -6,10 +6,10 @@ class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   static const List<String> _teamMembers = [
-    'Member A — GitHub: @member-a',
-    'Member B — GitHub: @member-b',
-    'Member C — GitHub: @member-c',
-    'Member D — GitHub: @member-d',
+    'Phat Vo',
+    'Ismail Yilmaz',
+    'Erkin Caliskan',
+    'Md Abdur Rahim',
   ];
 
   static const List<String> _packages = [

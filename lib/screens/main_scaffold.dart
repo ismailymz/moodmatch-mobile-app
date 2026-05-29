@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../constants/app_constants.dart';
+import 'browse_screen.dart';
+import 'home_screen.dart';
+import 'settings/settings_screen.dart';
 import 'placeholder_screen.dart';
 import 'search_screen.dart';
 
@@ -20,13 +23,13 @@ class _MainScaffoldState extends State<MainScaffold> {
       label: 'Home',
       icon: Icons.home,
       route: AppConstants.homeRoute,
-      screen: PlaceholderScreen(title: 'Home', icon: Icons.home),
+      screen: HomeScreen(),
     ),
     _ScaffoldTab(
       label: 'Browse',
       icon: Icons.explore,
       route: AppConstants.browseRoute,
-      screen: PlaceholderScreen(title: 'Browse', icon: Icons.explore),
+      screen: BrowseScreen(),
     ),
     _ScaffoldTab(
       label: 'Search',
@@ -44,7 +47,7 @@ class _MainScaffoldState extends State<MainScaffold> {
       label: 'Settings',
       icon: Icons.settings,
       route: AppConstants.settingsRoute,
-      screen: PlaceholderScreen(title: 'Settings', icon: Icons.settings),
+      screen: SettingsScreen(),
     ),
   ];
 
