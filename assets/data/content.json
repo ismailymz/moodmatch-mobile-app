@@ -53,6 +53,30 @@
           "subtitle": "Heartfelt comedy series",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/schitts-creek"
+        },
+        {
+          "id": "happy_music_3",
+          "type": "music",
+          "title": "Lovely Day",
+          "subtitle": "Bill Withers",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/lovely-day"
+        },
+        {
+          "id": "happy_movie_3",
+          "type": "movie",
+          "title": "Your Name",
+          "subtitle": "Beautiful animated movie",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/your-name"
+        },
+        {
+          "id": "happy_serie_3",
+          "type": "tvSeries",
+          "title": "Modern Family",
+          "subtitle": "Hilarious, loving, and chaotic series",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/modern-family"
         }
       ]
     },
@@ -109,6 +133,30 @@
           "subtitle": "Comforting baking competition",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/great-british-bake-off"
+        },
+        {
+          "id": "calm_music_3",
+          "type": "music",
+          "title": "Clair de Lune",
+          "subtitle": "Claude Debussy",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/clair-de-lune"
+        },
+        {
+          "id": "calm_movie_3",
+          "type": "movie",
+          "title": "A Good Year",
+          "subtitle": "Relaxing countryside drama",
+          "imageUrl": null,
+          "sourceUrl": "https://disneyplus.com/a-good-year"
+        },
+        {
+          "id": "calm_serie_3",
+          "type": "tvSeries",
+          "title": "Our Planet",
+          "subtitle": "Peaceful nature documentary",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/our-planet"
         }
       ]
     },
@@ -161,10 +209,34 @@
         {
           "id": "energetic_serie_2",
           "type": "tvSeries",
-          "title": "Brooklyn Nine-Nine",
-          "subtitle": "Fast-paced comedy",
+          "title": "Reacher",
+          "subtitle": "Action-packed thriller series",
           "imageUrl": null,
-          "sourceUrl": "https://netflix.com/brooklyn-nine-nine"
+          "sourceUrl": "https://primevideo.com/reacher"
+        },
+                {
+          "id": "energetic_music_3",
+          "type": "music",
+          "title": "Titanium",
+          "subtitle": "David Guetta ft. Sia",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/titanium"
+        },
+        {
+          "id": "energetic_movie_3",
+          "type": "movie",
+          "title": "Top Gun: Maverick",
+          "subtitle": "High-energy action drama",
+          "imageUrl": null,
+          "sourceUrl": "https://paramountplus.com/top-gun-maverick"
+        },
+        {
+          "id": "energetic_serie_3",
+          "type": "tvSeries",
+          "title": "Cobra Kai",
+          "subtitle": "Action-packed martial arts series",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/cobra-kai"
         }
       ]
     },
@@ -221,6 +293,30 @@
           "subtitle": "Soft romantic drama",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/virgin-river"
+        },
+                {
+          "id": "romantic_music_3",
+          "type": "music",
+          "title": "Perfect",
+          "subtitle": "Ed Sheeran",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/perfect"
+        },
+        {
+          "id": "romantic_movie_3",
+          "type": "movie",
+          "title": "The Notebook",
+          "subtitle": "Classic romantic drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/the-notebook"
+        },
+        {
+          "id": "romantic_serie_3",
+          "type": "tvSeries",
+          "title": "Crash Landing on You",
+          "subtitle": "Beloved Korean romantic drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/crash-landing-on-you"
         }
       ]
     },
@@ -277,6 +373,30 @@
           "subtitle": "Emotional family drama",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/this-is-us"
+        },
+                {
+          "id": "sad_music_3",
+          "type": "music",
+          "title": "Say Something",
+          "subtitle": "A Great Big World & Christina Aguilera",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/say-something"
+        },
+        {
+          "id": "sad_movie_3",
+          "type": "movie",
+          "title": "Good Will Hunting",
+          "subtitle": "Heartfelt drama about healing and self-discovery",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/good-will-hunting"
+        },
+        {
+          "id": "sad_serie_3",
+          "type": "tvSeries",
+          "title": "Maid",
+          "subtitle": "Emotional drama about resilience and hope",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/maid"
         }
       ]
     },
@@ -333,6 +453,30 @@
           "subtitle": "Creative work drama",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/mad-men"
+        },
+                {
+          "id": "focused_music_3",
+          "type": "music",
+          "title": "Experience",
+          "subtitle": "Ludovico Einaudi",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/experience"
+        },
+        {
+          "id": "focused_movie_3",
+          "type": "movie",
+          "title": "A Beautiful Mind",
+          "subtitle": "Brilliant mathematical drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/a-beautiful-mind"
+        },
+        {
+          "id": "focused_serie_3",
+          "type": "tvSeries",
+          "title": "Suits",
+          "subtitle": "Sharp legal strategy drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/suits"
         }
       ]
     },
@@ -389,6 +533,30 @@
           "subtitle": "Coming-of-age 80s nostalgia",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/the-wonder-years"
+        },
+                {
+          "id": "nostalgic_music_3",
+          "type": "music",
+          "title": "Sweet Child O' Mine",
+          "subtitle": "Guns N' Roses",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/sweet-child-o-mine"
+        },
+        {
+          "id": "nostalgic_movie_3",
+          "type": "movie",
+          "title": "Stand by Me",
+          "subtitle": "Timeless coming-of-age adventure",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/stand-by-me"
+        },
+        {
+          "id": "nostalgic_serie_3",
+          "type": "tvSeries",
+          "title": "Freaks and Geeks",
+          "subtitle": "Beloved high-school comedy-drama",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/freaks-and-geeks"
         }
       ]
     },
@@ -445,6 +613,30 @@
           "subtitle": "Musical comedy-drama",
           "imageUrl": null,
           "sourceUrl": "https://netflix.com/glee"
+        },
+                {
+          "id": "party_music_3",
+          "type": "music",
+          "title": "I Gotta Feeling",
+          "subtitle": "The Black Eyed Peas",
+          "imageUrl": null,
+          "sourceUrl": "https://spotify.com/i-gotta-feeling"
+        },
+        {
+          "id": "party_movie_3",
+          "type": "movie",
+          "title": "21 Jump Street",
+          "subtitle": "Hilarious action-comedy",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/21-jump-street"
+        },
+        {
+          "id": "party_serie_3",
+          "type": "tvSeries",
+          "title": "How I Met Your Mother",
+          "subtitle": "Fun friendship and nightlife sitcom",
+          "imageUrl": null,
+          "sourceUrl": "https://netflix.com/how-i-met-your-mother"
         }
       ]
     }
