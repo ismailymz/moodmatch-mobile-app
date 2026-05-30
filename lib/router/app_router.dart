@@ -7,6 +7,7 @@ import '../screens/placeholder_screen.dart';
 import '../models/content_item.dart';
 import '../screens/detail_screen.dart';
 import '../screens/welcome_screen.dart';
+import '../screens/about/about_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
@@ -36,8 +37,7 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppConstants.aboutRoute,
-      builder: (context, state) =>
-          const PlaceholderScreen(title: 'About', icon: Icons.info_outline),
+      builder: (context, state) => const AboutScreen(),
     ),
     GoRoute(
       path: '${AppConstants.detailRoute}/:id',
